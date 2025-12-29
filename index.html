@@ -7,6 +7,22 @@
 </head>
 <body>
 
+    <div class="top-controls">
+    <button id="theme-toggle" aria-label="Toggle night mode" class="theme-toggle" aria-pressed="false">
+        <svg class="icon sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM1 13h3v-2H1v2zm10-9h2V1h-2v3zm7.03 1.05l1.79-1.79-1.79-1.79-1.79 1.79 1.79 1.79zM17 13h3v-2h-3v2zM12 6a6 6 0 100 12 6 6 0 000-12zm0 2a4 4 0 110 8 4 4 0 010-8zM6.76 19.16l1.79-1.79-1.79-1.79-1.79 1.79 1.79 1.79zM20.83 19.16l1.79-1.79-1.79-1.79-1.79 1.79 1.79 1.79zM12 23h2v-3h-2v3z" />
+        </svg>
+        <svg class="icon moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+    </button>
+    <button id="leaderboard-btn" title="Show leaderboard" class="theme-toggle leaderboard-toggle" aria-haspopup="dialog">
+        <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2l2.09 6.26L20 9.27l-5 3.64L16.18 21 12 17.77 7.82 21 9 12.91 4 9.27l5.91-.99L12 2z"/>
+        </svg>
+    </button>
+    </div>
+
     <div class="loading-screen">
         <div class="loader-container">
             <div class="spinner"></div>
@@ -15,7 +31,7 @@
     </div>
 
     <div class="game-card">
-        <h1>CSS GAME Sequence Sample</h1>
+        <h1>Guess the missing number!</h1>
         <div id="sequence-container">
             </div>
         
@@ -27,6 +43,26 @@
         <div class="stats">
             <p>Score: <span id="score">0</span></p>
             <p id="message">Find the pattern!</p>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboard-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <h2>Leaderboard</h2>
+            <ol id="leaderboard-list" class="leaderboard-list"></ol>
+            <button id="close-leaderboard">Close</button>
+        </div>
+    </div>
+
+    <!-- Game Over Modal (requires name input) -->
+    <div id="gameover-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <h2>Game Over</h2>
+            <p>Your score: <strong id="final-score">0</strong></p>
+            <label for="player-name">Enter your name to save:</label>
+            <input id="player-name" maxlength="20" placeholder="Your name" />
+            <button id="submit-score" disabled>Submit Score</button>
         </div>
     </div>
     <script src="script.js"></script>
