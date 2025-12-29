@@ -1,0 +1,151 @@
+body {
+    background-color: #253759;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.game-card {
+    background: #16213e;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    cursor: crosshair;
+    border: 2px solid #b78c38;
+    transition: all 0.3s ease;
+}
+
+.game-card:hover {
+    border-color: #38bdf8; /* Change border color on hover */
+    
+    /* box-shadow: [x-offset] [y-offset] [blur] [spread] [color] */
+    box-shadow: 0 0 20px 5px rgba(56, 189, 248, 0.5);
+    
+    transform: translateY(-5px); /* Optional: lifts the box slightly */
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 10px 2px rgba(56, 189, 248, 0.4); }
+    50% { box-shadow: 0 0 25px 8px rgba(56, 189, 248, 0.7); }
+    100% { box-shadow: 0 0 10px 2px rgba(56, 189, 248, 0.4); }
+}
+
+.num-box:hover {
+    animation: pulse-glow 1.5s infinite ease-in-out;
+}
+
+#sequence-container {
+    display: flex;
+    gap: 15px;
+    margin: 30px 0;
+    justify-content: center;
+}
+
+.num-box {
+    background: #221086;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 2px solid #b0babf;
+}
+
+.input-area input {
+    background-color: #221086;
+    color: #fff;
+}
+
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 80px;
+    font-size: 1.1rem;
+}
+
+button {
+    padding: 10px 20px;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover { 
+    background: #ff4d6d;
+    opacity: 0.5;
+}
+
+:root {
+    --bg-color: #0f172a;
+    --accent-color: #38bdf8;
+    --load-time: 3s; /* Control how long it loads here */
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden; /* Prevents scrolling during loading */
+}
+
+/* 1. The Loading Overlay */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Animation to fade out and hide */
+    animation: fadeOut 0.5s ease-in-out var(--load-time) forwards;
+}
+
+/* 2. The Spinner */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(56, 189, 248, 0.2);
+    border-top: 3px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* 3. The Content (Hidden initially) */
+.main-content {
+    opacity: 0;
+    padding: 40px;
+    color: white;
+    text-align: center;
+    /* Reveal content slightly after loader starts fading */
+    animation: reveal 0.8s ease-out calc(var(--load-time) + 0.2s) forwards;
+}
+
+/* Keyframes */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; visibility: visible; }
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes reveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
